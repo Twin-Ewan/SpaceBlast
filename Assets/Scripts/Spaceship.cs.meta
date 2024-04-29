@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 46bd124322ab5c34882aa653d058f82c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - laser: {fileID: 3834939735366180317, guid: ff84fefd631339745a69cfe685b8c2b8, type: 3}
+  - audioSource: {instanceID: 0}
+  - audioFire: {fileID: 8300000, guid: 1d1748a6592220f4ab41d2a16a915c4e, type: 3}
+  - audioDeath: {fileID: 8300000, guid: 90edce2642ea0d848963b350d5dc06d6, type: 3}
+  - audioHit: {fileID: 8300000, guid: ca46df57f4dac044fbe2f1e85341f366, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
