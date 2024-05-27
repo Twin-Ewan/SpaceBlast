@@ -13,7 +13,7 @@ public class Spaceship : MonoBehaviour
     protected int direction = 1;
 
     public enum shipType { Player, Basic, Glass, Burst, Strong }
-    public shipType shipClass;
+    public shipType shipClass { get; set; }
 
     public float fireRate { get; set; } = 2;
     protected float reloadTime = 1;

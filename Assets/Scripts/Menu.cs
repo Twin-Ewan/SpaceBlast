@@ -9,8 +9,8 @@ public class Menu : MonoBehaviour
     [SerializeField] TextMeshProUGUI highscoreText;
 
     // Volume Variables
-    [SerializeField] public Text VolumeText;
-    [SerializeField] public Slider VolumeSlider;
+    [SerializeField] Text VolumeText;
+    [SerializeField] Slider VolumeSlider;
     [SerializeField] AudioClip ding;
     AudioSource audioSource;
     bool volChange = false;

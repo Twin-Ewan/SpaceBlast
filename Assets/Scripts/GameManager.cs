@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Asteroid;
 
     Vector2 SpawnPos = new Vector2(10, 0);
-    public List<GameObject> Enemies = new List<GameObject>();
     GameObject Ship;
     public int score { get; set; } = 0;
     float difficulty = 0;
@@ -47,8 +46,6 @@ public class GameManager : MonoBehaviour
         {
             AmmoText.text = "Ammo: " + Player.ammo.ToString() + "/" + Player.maxAmmo.ToString();
             GameScoreText.text = "Score: " + score.ToString();
-
-            for (int i = 0; i < Enemies.Count; i++) if (Enemies[i] == null) Enemies.RemoveAt(i);
         }
     }
 
@@ -56,11 +53,8 @@ public class GameManager : MonoBehaviour
     {
         Player = GameObject.Find("Player").GetComponent<Spaceship>();
 
-        difficulty = 10;
-        SpawnSingle(-4);
-
         // Spawns a enemy every 7s from diffculty 0 - 4, every 6s 5 - 9 and 5s at 10
-        //InvokeRepeating("ChooseEnemy", 1, 7 - difficulty/5);
+        InvokeRepeating("ChooseEnemy", 1, 7 - difficulty/5);
     }
 
     public void GameOver()
@@ -144,7 +138,6 @@ public class GameManager : MonoBehaviour
         Ship = Instantiate(SSPrefab, SpawnPos, Quaternion.identity);
         Ship.GetComponent<Spaceship>().shipClass = (Spaceship.shipType)type;
         Ship.GetComponent<EnemySpaceship>().Speed = Speed;
-        Enemies.Add(Ship);
     }
 
     void SpawnPair(float Speed)
