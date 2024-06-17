@@ -35,11 +35,14 @@ public class Spaceship : MonoBehaviour
     [SerializeField] protected AudioClip audioDeath;
     [SerializeField] protected AudioClip audioHit;
 
+
+    GameManager GM;
     void Start()
     {
         healthBar = transform.GetChild(1).gameObject;
         soundSource = GetComponent<AudioSource>();
         audioVolume = PlayerPrefs.GetFloat("Volume");
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         Material bodyColour = transform.GetChild(0).GetChild(1).GetComponent<Renderer>().material;
 
@@ -117,8 +120,12 @@ public class Spaceship : MonoBehaviour
 
     void Die()
     {
-         if(shipClass != shipType.Player) GameObject.Find("GameManager").GetComponent<GameManager>().UpdateKillCount((int)shipClass);
-        GameObject.Find("GameManager").GetComponent<GameManager>().score += scoreOnDeath;
+        if (shipClass != shipType.Player)
+        {
+            GM.UpdateKillCount((int)shipClass);
+            GM.UpdateKillCount();
+        }
+        GM.score += scoreOnDeath;
 
         GameObject GOExplode = Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
         GOExplode.AddComponent<AudioSource>();

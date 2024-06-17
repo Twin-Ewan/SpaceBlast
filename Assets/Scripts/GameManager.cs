@@ -23,7 +23,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text AmmoText, GameScoreText;
 
     [SerializeField] TextMeshProUGUI[] ShipKilledText;
-    [SerializeField] int[] ShipKilledCount = new int[4];
+    int[] ShipKilledCount = new int[4];
+
+    [SerializeField] TextMeshProUGUI ShipKilledTotalText;
+    int ShipKilledTotal;
 
     [SerializeField] TextMeshProUGUI HighscoreText, ScoreText;
     [SerializeField] GameObject GameplayCanvas, HighscoreCanvas;
@@ -78,6 +81,14 @@ public class GameManager : MonoBehaviour
         ShipKilledText[1].text = "Glass: " + ShipKilledCount[1];
         ShipKilledText[2].text = "Burst: " + ShipKilledCount[2];
         ShipKilledText[3].text = "Strong: " + ShipKilledCount[3];
+    }
+
+    public void UpdateKillCount()
+    {
+        // This is a stupid way of doing this instead of just adding all the indivual counts together
+        // But alas, requirements are required and I am tired so this must be
+        ShipKilledTotal++;
+        ShipKilledTotalText.text = "Total: " + ShipKilledTotal;
     }
 
     void ChooseEnemy()
